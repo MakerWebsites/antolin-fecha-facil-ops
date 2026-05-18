@@ -1,8 +1,11 @@
 // 1. Selecione os elementos da tela primeiro
 let b = document.getElementById("btn_total");
 
-// 2. Crie o evento de clique
-b.addEventListener('click', function () {
+// 2. Crie o evento de clique (passando o parâmetro 'e' para controlar o evento)
+b.addEventListener('click', function (e) {
+    
+    // 🛑 IMPEDE O FORMULÁRIO DE RECARREGAR A PÁGINA AUTOMATICAMENTE
+    e.preventDefault(); 
     
     // --- VALIDAÇÃO COM JANELINHA NATIVA E BORDA VERMELHA ---
     const camposObrigatorios = document.querySelectorAll('#quantidade_total input[required]');
