@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fecha Fácil/OP</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Fechamento de OPs v1.0</h1>
+        <p>Calculadora desenvolvida com o intuito de facilitar o fechamento de OPs</p>
+    </header>
+
+   <form action="">
+
+ <div class="content-mp">
+
+        <div id="quantidade_total">
+
+
+            <div class="alinha_inputs">
+                <h2>Quant. Recebida</h2>
+                <br>
+                <label for="">Pote/lata</label>
+                <input enterkeyhint="next" id="pote_rec" type="number" placeholder="Quant. pote/lata" required>
+                <br>
+                <label for="">Tampa <strong>p</strong></label>
+                <input enterkeyhint="next" id="tampa_p_rec" type="number" placeholder="Quant. tampa P" required>
+                <br>
+                <label for="">Tampa <strong>B</strong></label>
+                <input enterkeyhint="next" id="tampa_b_rec" type="number" placeholder="Quant. tampa B" required>
+                <br>
+                <label for="">Dosador</label>
+                <input enterkeyhint="next" id="dosador_rec" type="number" placeholder="Quant. dosador" required>
+                <br>
+                <label for="">Sílica</label>
+                <input enterkeyhint="next" id="silica_rec" type="number" placeholder="Quant. sílica" required>
+                <br>
+                <label for="">Rótulo</label>
+                <input enterkeyhint="next" id="rotulo_rec" type="number" placeholder="Quant. rótulo" required>
+                <br>
+                <label for="">Contador</label>
+                <input enterkeyhint="next" id="contador" type="number" placeholder="Total contador">
+            </div>
+        </div>
+
+        <div id="quantidade_perda">
+
+            <h2>Perdas</h2>
+
+            <div class="alinha_inputs">
+
+                <br>
+                <label for="">Pote/lata</label>
+                <input enterkeyhint="next" id="pote_perda" type="number" placeholder="Quant. pote/lata">
+                <br>
+                <label for="">Tampa <strong>p</strong></label>
+                <input enterkeyhint="next" id="tampa_p_perda" type="number" placeholder="Quant. tampa P">
+                <br>
+                <label for="">Tampa <strong>B</strong></label>
+                <input enterkeyhint="next" id="tampa_b_perda" type="number" placeholder="Quant. tampa B">
+                <br>
+                <label for="">Dosador</label>
+                <input enterkeyhint="next" id="dosador_perda" type="number" placeholder="Quant. dosador">
+                <br>
+                 <label for="">Quant.</label>
+                <select name="" id="qnt_silicas">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <label for="">Sílica</label>
+                <br>
+                <input enterkeyhint="next" id="silica_perda" type="number" placeholder="Quant. sílica">
+                <br>
+                <label for="">Total OP</label>
+                <input enterkeyhint="done" id="total" type="number" placeholder="Total OP">
+                <br>
+               
+                <div class="btn_calcular_div">
+                    <button id="btn_total">Calcular total OP</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+   </form>
+
+    <div id="modal-resultado" class="modal-container">
+    <div class="modal-conteudo">
+        <span id="btn-fechar-modal" class="modal-fechar">&times;</span>
+        
+        <div id="conteudo-relatorio"></div>
+    </div>
+</div>
+
+    <footer>
+
+        <div id="space_text_footer">
+            <div>
+                <p>Fechamento de OPs v1.0|© 2026 Antolin Junior • Uso interno</p>
+            </div>
+            <div>
+
+                <a href="#">Política de Privacidade (LGPD)</a>
+                <a href="#">Manual do Usuário</a>
+            </div>
+        </div>
+
+   </footer>
+
+    <script>
+        document.addEventListener('keydown', function (event) {
+            const mapearEnter = event.key === 'Enter' || event.keyCode === 13;
+            if (mapearEnter) {
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'SELECT') {
+                    event.preventDefault();
+                    const elementos = Array.from(document.querySelectorAll('input:not([disabled]), select:not([disabled])'));
+                    const index = elementos.indexOf(event.target);
+                    if (index > -1 && index < elementos.length - 1) {
+                        elementos[index + 1].focus();
+                    } else if (index === elementos.length - 1) {
+                        const botaoCalcular = document.getElementById('btn_total'); // Alterado para buscar direto pelo ID do seu botão
+                        if (botaoCalcular) {
+                            botaoCalcular.click();
+                        }
+                    }
+                }
+            }
+        });
+    </script> 
+    <script src="calculo.js"></script>
+
+</body>
+</html>
