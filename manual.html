@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual do Usuário - Fecha Fácil/OP</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 14px;
+            background-color: rgb(164, 164, 164);
+        }
+        body {
+            padding: 1rem;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid black;
+        }
+        header {
+            background-color: #1E3A8A;
+            border-radius: 8px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+        }
+        h1 { font-size: 1.8rem; margin-bottom: 5px; }
+        h2 { color: #1E3A8A; margin: 25px 0 10px 0; border-bottom: 2px solid #eee; padding-bottom: 5px; font-size: 1.4rem; }
+        h3 { color: #333; margin: 15px 0 5px 0; font-size: 1.1rem; }
+        p { color: #444; margin-bottom: 15px; }
+        ul, ol { margin-left: 20px; margin-bottom: 15px; color: #444; }
+        li { margin-bottom: 5px; }
+        
+        /* Estilização da Tabela Responsiva */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1E3A8A;
+            color: white;
+        }
+        tr:nth-child(even) { background-color: #f4f6f9; }
+
+        /* Botão Voltar */
+        .btn-voltar {
+            display: inline-block;
+            background-color: #ff0000;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.4);
+            transition: all 0.2s ease;
+            text-align: center;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .btn-voltar:hover {
+            background-color: rgb(13, 0, 255);
+            transform: scale(1.02);
+        }
+
+        @media screen and (min-width: 600px) {
+            html { font-size: 16px; }
+            body { padding: 2rem; }
+            .btn-voltar { width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Manual do Usuário</h1>
+            <p>Calculadora de OPs v1.0 — Uso Interno Integral Médica</p>
+        </header>
+
+        <section>
+            <p><strong>Objetivo:</strong> Guia prático para a automação e cálculo rápido de devoluções e perdas de Matéria-Prima (MP) e Materiais de Embalagem (ME) nas Ordens de Produção (OP).</p>
+            
+            <h2>📝 Passo a Passo Operacional</h2>
+            
+            <h3>Passo 1: Preenchimento das Quantidades Recebidas</h3>
+            <p>No primeiro bloco (<strong>Quant. Recebida</strong>), insira a quantidade total de insumos que foram retirados do almoxarifado ou recebidos para a execução daquela respectiva ordem:</p>
+            <ul>
+                <li><strong>Pote/Lata, Tampas (P e B), Dosador, Sílica e Rótulo:</strong> Insira o valor exato que consta na requisição de materiais.</li>
+                <li><strong>Contador:</strong> Insira o número final registrado pelo contador físico/maquinário da linha de produção.</li>
+            </ul>
+
+            <h3>Passo 2: Preenchimento das Perdas e Dados Finais</h3>
+            <p>No segundo bloco (<strong>Perdas</strong>), insira o que foi descartado ou avariado no processo:</p>
+            <ul>
+                <li>Insira as perdas reais físicas de Potes, Tampas e Dosadores.</li>
+                <li><strong>Quant. Sílica:</strong> No menu de seleção, escolha quantas unidades de sílica vão dentro de <em>cada</em> pote individualmente (Opções: 1, 2 ou 3).</li>
+                <li><strong>Total OP:</strong> Digite a quantidade total de produtos acabados que foram efetivamente fechados e aprovados nesta OP.</li>
+            </ul>
+
+            <h3>Passo 3: Geração do Relatório</h3>
+            <p>Após preencher todos os campos, clique no botão <strong>Calcular total OP</strong>. Você pode alternar entre os campos utilizando a tecla <strong>Enter</strong> do seu teclado para agilizar a digitação.</p>
+
+            <h2>📊 Entendendo o Relatório Gerado</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item do Relatório</th>
+                            <th>Como o cálculo é feito?</th>
+                            <th>O que fazer com o resultado?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Pote / Tampas / Dosador</strong></td>
+                            <td><code>Recebido - Perda - Total OP</code></td>
+                            <td>Quantidade que deve retornar fisicamente ao estoque de almoxarifado.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sílica</strong></td>
+                            <td><code>Recebido - Perda - (Multiplicador × Total OP)</code></td>
+                            <td>Quantidade de sílica restante a ser devolvida.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Devol. Rótulo</strong></td>
+                            <td><code>Rótulo Recebido - Contador - Perda</code></td>
+                            <td>Sobra líquida de rótulos intactos para devolução.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Perda Rótulo</strong></td>
+                            <td><code>Contador - Total OP</code></td>
+                            <td>Quantidade de rótulos perdidos no setup/operação da máquina.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>⚠️ Avisos Importantes</h2>
+            <ol>
+                <li><strong>Campos Obrigatórios:</strong> O sistema não executará os cálculos se houver campos em branco. Os campos vazios ficarão com uma <strong>borda vermelha</strong> de alerta.</li>
+                <li><strong>Valores Negativos:</strong> O sistema trava inteligentemente os resultados abaixo de zero, evitando distorções causadas por erros de digitação.</li>
+                <li><strong>Conferência Obrigatória:</strong> Este sistema opera exclusivamente como ferramenta de apoio técnico. É obrigatório conferir os valores físicos antes de lançar os dados nos sistemas formais de ERP da empresa.</li>
+            </ol>
+        </section>
+
+        <!-- Altere o href para o nome do seu arquivo principal (ex: index.html) -->
+        <a href="index.html" class="btn-voltar">⬅ Voltar para a Calculadora</a>
+    </div>
+
+</body>
+</html>

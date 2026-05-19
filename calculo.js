@@ -7,8 +7,9 @@ b.addEventListener('click', function (e) {
     // 🛑 IMPEDE O FORMULÁRIO DE RECARREGAR A PÁGINA AUTOMATICAMENTE
     e.preventDefault(); 
     
-    // --- VALIDAÇÃO COM JANELINHA NATIVA E BORDA VERMELHA ---
-    const camposObrigatorios = document.querySelectorAll('#quantidade_total input[required]');
+  // --- VALIDAÇÃO COM JANELINHA NATIVA E BORDA VERMELHA (TOTAL E PERDAS) ---
+    // O seletor agora busca inputs [required] dentro de ambos os IDs separados por vírgula
+    const camposObrigatorios = document.querySelectorAll('#quantidade_total input[required], #quantidade_perda input[required]');
     let primeiroCampoInvalido = null;
 
     camposObrigatorios.forEach(input => {
@@ -24,12 +25,13 @@ b.addEventListener('click', function (e) {
         }
     });
 
-    // Se houver algum campo inválido...
+    // Se houver algum campo inválido em qualquer uma das duas seções...
     if (primeiroCampoInvalido) {
         // Dispara a janelinha nativa de aviso do navegador apontando para o campo
         primeiroCampoInvalido.reportValidity(); 
         return; // Interrompe o código e não abre o modal
     }
+    // ------------------------------------------------------------------------
     // -----------------------------------------------------
 
     // 3. Pegue os valores ATUAIS dentro do clique

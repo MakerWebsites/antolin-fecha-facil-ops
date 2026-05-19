@@ -287,3 +287,11 @@ footer p {
         border-radius: 20px;
     }
 }
+
+/* Força os inputs a terem pelo menos 16px apenas em telas de celulares para evitar o zoom do iOS */
+@media screen and (max-width: 768px) {
+    .alinha_inputs input, 
+    .alinha_inputs select {
+        font-size: 16px !important;
+    }
+}
